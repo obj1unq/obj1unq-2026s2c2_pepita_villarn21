@@ -51,11 +51,11 @@ object pepon {
   var energia = 30
   var ultimoAlimento = manzana
   method comer(alimento) {
-    self.validarComida(alimento)
+    self.validarAlimento(alimento)
     energia = energia + (alimento.energiaAporta() / 2)
     ultimoAlimento = alimento 
   }
-  method validarComida(alimento){
+  method validarAlimento(alimento){
     if(alimento == ultimoAlimento){
       self.error("No puede comer " + alimento + " nuevamente")
     }

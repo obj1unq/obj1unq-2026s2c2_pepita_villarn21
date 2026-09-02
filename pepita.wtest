@@ -1,26 +1,21 @@
 import pepita.*
 describe "pepita" {
-  test "pepita no esta cansada" {
-    pepita.energia(100)
+  test "pepita esta cansada" {
     assert.notThat(pepita.estaCansada())
+  }
+  test "puede volar" {
+    assert.that(pepita.puedeVolar(60))
   }
 }
 describe "pepon" {
-  test "pepon no esta cansado" {
-    pepon.energia(100)
-    assert.notThat(pepon.estaCansado())
+  test "pepon esta cansado" {
+    assert.that(pepon.estaCansado())
   }
 }
-
-
-
-
-
-
 describe "pepita energia" {
-  test "no puede volar" {
-    assert.throwsException({pepita.volar(1000)})
-}
+    test "no puede volar" {
+    assert.throwsException({pepita.volar(1000)})  
+    }
 }
 describe "pepon alimento" {
   test "no puede repetir" {
