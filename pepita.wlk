@@ -1,6 +1,5 @@
 object pepita {
   var energia = 100
-  
   method volar(metros) {
     self.validarVolar(metros)
     energia = energia - 10 - (metros / 10)

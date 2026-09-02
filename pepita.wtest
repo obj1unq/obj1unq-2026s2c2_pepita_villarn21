@@ -1,7 +1,11 @@
 import pepita.*
 describe "pepita" {
-  test "pepita esta cansada" {
+  test "pepita no esta cansada" {
     assert.notThat(pepita.estaCansada())
+  }
+  test "pepita esta cansada" {
+    pepita.energia(29)
+    assert.that(pepita.estaCansada())
   }
   test "puede volar" {
     assert.that(pepita.puedeVolar(60))
@@ -10,6 +14,10 @@ describe "pepita" {
 describe "pepon" {
   test "pepon esta cansado" {
     assert.that(pepon.estaCansado())
+  }
+  test "pepon no esta cansado" {
+    pepon.energia(36)
+    assert.notThat(pepon.estaCansado())
   }
 }
 describe "pepita energia" {
