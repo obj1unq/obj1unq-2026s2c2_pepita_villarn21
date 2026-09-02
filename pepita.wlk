@@ -2,7 +2,10 @@ object pepita {
   var energia = 100
   method volar(metros) {
     self.validarVolar(metros)
-    energia = energia - 10 - (metros / 10)
+    energia = self.gastoEnergiaVolar(metros)
+  }
+  method gastoEnergiaVolar(metros){
+    return energia - 10 - (metros / 10)
   }
   method validarVolar(metros){
     if (not self.puedeVolar(metros) ){
@@ -10,7 +13,7 @@ object pepita {
     }
   }
   method puedeVolar(metros){
-    return (energia - 10 - (metros / 10)) >= 30 
+    return self.gastoEnergiaVolar(metros) >= 30 
   }
   method descansar() {
     energia = energia + 10
