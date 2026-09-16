@@ -1,3 +1,5 @@
+import wollok.game.*
+
 object pepita {
   var energia = 100
   
@@ -10,11 +12,15 @@ object pepita {
   method estaCansada() {
     return energia < 30
   }
-  method comer(alpiste) {
-    energia = energia + alpiste.energiaAporta()
+  method comer(alimento) {
+    energia = energia + alimento.energiaAporta()
   }
 }
 object alpiste {
+  var property position = game.at(2,3) 
+  method image(){
+    return "alpiste.png"
+  }
   method energiaAporta() {
     return 25
   }
@@ -22,6 +28,10 @@ object alpiste {
 object manzana {
   const caloriasBase = 20
   var madurez = 1
+  var property position = game.at(8,4)
+  method image(){
+    return "manzana.png"
+  } 
   method energiaAporta(){
     return caloriasBase * self.escala()
   }
@@ -34,8 +44,8 @@ object manzana {
 }
 object pepon {
   var energia = 30
-  method comer(alpiste) {
-    energia = energia + (alpiste.energiaAporta() / 2) 
+  method comer(alimento) {
+    energia = energia + (alimento.energiaAporta() / 2) 
   }
   method volar(km) {
     energia = energia - 20 - (km * 2) 
@@ -47,8 +57,8 @@ object pepon {
 object rebeca {
   var ave = pepon
   var cantidadCenas = 0
-  method alimentar(alpiste) {
-    ave.comer(alpiste)
+  method alimentar(alimento) {
+    ave.comer(alimento)
     cantidadCenas = cantidadCenas + 1
   }
   method entrenar(mascota) {
