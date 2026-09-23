@@ -1,10 +1,20 @@
 import wollok.game.*
-
 object pepita {
   var energia = 100
-  
   method volar(metros) {
-    energia = energia - 10 - (metros / 10)
+    self.validarVolar(metros)
+    energia = self.gastoEnergiaVolar(metros)
+  }
+  method gastoEnergiaVolar(metros){
+    return energia - 10 - (metros / 10)
+  }
+  method validarVolar(metros){
+    if (not self.puedeVolar(metros) ){
+      self.error("Pepita no tiene energia para volar " + metros + " metros")
+    }
+  }
+  method puedeVolar(metros){
+    return self.gastoEnergiaVolar(metros) >= 30 
   }
   method descansar() {
     energia = energia + 10
@@ -14,6 +24,12 @@ object pepita {
   }
   method comer(alimento) {
     energia = energia + alimento.energiaAporta()
+  }
+  method energia(_energia){
+    energia = _energia
+  }
+  method energia(){
+    return energia
   }
 }
 object alpiste {
@@ -44,14 +60,20 @@ object manzana {
 }
 object pepon {
   var energia = 30
-  method comer(alimento) {
-    energia = energia + (alimento.energiaAporta() / 2) 
+  method comer(alpiste) {
+    energia = energia + (alpiste.energiaAporta() / 2) 
   }
   method volar(km) {
     energia = energia - 20 - (km * 2) 
   }
   method estaCansado() {
     return energia < 34
+  }
+  method energia(_energia){
+    energia = _energia
+  }
+  method energia(){
+    return energia
   }
 }
 object rebeca {
