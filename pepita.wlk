@@ -1,6 +1,6 @@
 import wollok.game.*
 object pepita {
-  var energia = 100
+  var energia = 99 + 1 //cambio feature
   method volar(metros) {
     self.validarVolar(metros)
     energia = self.gastoEnergiaVolar(metros)
